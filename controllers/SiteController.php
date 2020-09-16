@@ -23,7 +23,7 @@ class SiteController extends \yii\web\Controller
 
     public function actionHome() : string{
         //TODO: render start Page
-        return "site/home";
+        return $this->render('home');
     }
 
 

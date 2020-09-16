@@ -7,12 +7,9 @@ namespace app\models\install;
 use Exception;
 use Yii;
 use yii\base\Model;
-use yii\base\Security;
 use yii\db\Connection;
-use yii\helpers\StringHelper;
-use yii\validators\DefaultValueValidator;
 
-class AppConfigModel extends Model
+class InitConfigModel extends Model
 {
     // names.php
     public string $adminMail = '';
@@ -49,14 +46,14 @@ class AppConfigModel extends Model
         $namesSample = file_get_contents(Yii::$app->basePath . '/config/names.sample.php');
         $secretsSample = file_get_contents(Yii::$app->basePath . '/config/secrets.sample.php');
         $attributes = $this->getAttributes();
-        $attributes['dns'] = $this->generateDnsString();
+        $attributes['dbDns'] = $this->generateDnsString();
         $attributeNames = array_keys($attributes);
         array_walk($attributeNames, static function (&$val){
-            $val = "\<" . $val . "\>";
+            $val = "<" . $val . ">";
         });
         Yii::debug($attributeNames);
-        $namesContent = str_replace($attributeNames, array_values($attributeNames), $namesSample);
-        $secretsContent = str_replace($attributeNames, array_values($attributeNames), $secretsSample);
+        $namesContent = str_replace($attributeNames, array_values($attributes), $namesSample);
+        $secretsContent = str_replace($attributeNames, array_values($attributes), $secretsSample);
         file_put_contents(Yii::$app->basePath . '/config/names.php', $namesContent);
         file_put_contents(Yii::$app->basePath . '/config/secrets.php', $secretsContent);
 

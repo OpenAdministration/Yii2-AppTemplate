@@ -1,8 +1,8 @@
-
 <?php
 
 // comment out the following two lines when deployed to production
 use yii\web\Application;
+use app\controllers\ConfigController;
 
 defined('YII_DEBUG') or define('YII_DEBUG', true);
 defined('YII_ENV') or define('YII_ENV', 'dev');
@@ -17,5 +17,6 @@ if(defined('START_INSTALLER')){
     $app->defaultRoute = 'install/welcome';
 }else{
     $app->defaultRoute = 'site/home';
+    $app->on(Application::EVENT_BEFORE_ACTION, [ConfigController::class, 'loadConfig']);
 }
 $app->run();

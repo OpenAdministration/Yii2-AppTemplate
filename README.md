@@ -1,2 +1,12 @@
-Make sure you have a local installation of php Composer 
+To load all dependencies run in Terminal: 
+```
+composer global require "fxp/composer-asset-plugin"
+composer install 
+```
 
+After using this Template fill in `config/web.php` the following attributes: 
+```
+    'id' => '...',
+    'name' => '...',
+```
+with fitting default Entries for your Application and delete this passage in this Readme file. 

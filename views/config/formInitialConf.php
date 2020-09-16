@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\install\AppConfigModel */
+/* @var $model app\models\install\InitConfigModel */
 
 Yii::$app->language = 'de-DE';
 ?>

@@ -1,24 +1,26 @@
 <?php
 
 
-namespace app\migrations;
 
 
 class m200915_005000_initDB extends \yii\db\Migration
 {
     public function up() : bool
     {
-        // this is useless example code - please describe your own tables
-        $this->createTable('exampleTable', [
+        // this is example code
+        $this->createTable('config', [
             'id' => $this->primaryKey(),
-            'timestamp' => $this->timestamp(),
+            'name' => $this->string(),
+            'value' => $this->json(),
         ]);
+         // please describe your own tables as well
         return true;
     }
 
     public function down() : bool
     {
         // undo
-        $this->dropTable('exampleTable');
+        $this->dropTable('config');
+        return true;
     }
 }

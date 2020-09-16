@@ -14,7 +14,11 @@
         "yiisoft/yii2": "~2.0.37",
         "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
         "yiisoft/yii2-bootstrap4": "~2.0.8",
-        "yidas/yii2-bower-asset": "dev-master"
+        "yiisoft/yii2-bootstrap": "~2.0.10",
+        "yidas/yii2-bower-asset": "dev-master",
+        "magp/yii2-json-schema-validator": "dev-master",
+        "romi45/yii2-json-validator": "dev-master",
+        "ext-json": "*"
     },
     "require-dev": {
         "roave/security-advisories": "dev-master",
@@ -23,9 +27,11 @@
         "yiisoft/yii2-faker": "~2.0.0"
     },
     "config": {
-        "process-timeout": 1800,
         "fxp-asset": {
-            "enabled": true
+            "installer-paths": {
+                "npm-asset-library": "vendor/npm",
+                "bower-asset-library": "vendor/bower"
+            }
         }
     },
     "scripts": {

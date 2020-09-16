@@ -7,24 +7,21 @@ use yii\log\FileTarget;
 use yii\swiftmailer\Mailer;
 use yii\caching\FileCache;
 
-if(file_exists(__DIR__ . '/names.php') && file_exists(__DIR__ . '/secrets.php')){
-    [$id, $name, $params, $defaultLang] = require __DIR__ . '/names.php';
+if(file_exists(__DIR__ . '/secrets.php')){
     $secrets = require  __DIR__ . '/secrets.php';
 }else{
-    [$id, $name, $params, $defaultLang] = require __DIR__ . '/names.sample.php';
     $secrets = require  __DIR__ . '/secrets.sample.php';
     define('START_INSTALLER', true);
 }
 
 $config = [
-    'id' => $id,
-    'name' => $name,
+    'id' => 'yii-app',
+    'name' => 'Yii App',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
-    'language' => $defaultLang,
     'aliases' => [
-        '@bower' => '@vendor/bower-asset',
-        '@npm'   => '@vendor/npm-asset',
+        '@bower' => '@vendor/bower',
+        '@npm'   => '@vendor/npm',
     ],
 
     'components' => [
