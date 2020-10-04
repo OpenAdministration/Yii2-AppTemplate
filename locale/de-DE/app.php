@@ -6,5 +6,6 @@ return [
     'Welcome' => 'Wilkommen',
     'Submit' => 'Absenden',
     'Save' => 'Speichern',
-    'Yii App' => 'Yii App'
+    'Yii App' => 'Yii App',
+    'Configuration' => 'Konfiguration',
 ];

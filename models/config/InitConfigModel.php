@@ -1,7 +1,7 @@
 <?php
 
 
-namespace app\models\install;
+namespace app\models\config;
 
 
 use Exception;
@@ -129,6 +129,7 @@ class InitConfigModel extends Model
             'adminMail' => 'Mail Administrator*in'
         ];
     }
+
 
 
 

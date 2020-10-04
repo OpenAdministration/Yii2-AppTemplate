@@ -1,20 +1,19 @@
 <?php
 
-namespace app\models\install;
+namespace app\models\db;
 
-use magp\yii2jsv\JsonSchemaValidator;
 use romi45\yii2jsonvalidator\JsonValidator;
-use Swaggest\JsonSchema\JsonSchema;
-use Yii;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "config".
  *
- * @property int $id
- * @property string|null $name
- * @property string|null $value
+ * @property string $category
+ * @property string $name
+ * @property string $value
+ *
  */
-class ConfigRecord extends \yii\db\ActiveRecord
+class ConfigRecord extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -30,8 +29,8 @@ class ConfigRecord extends \yii\db\ActiveRecord
     public function rules() : array
     {
         return [
-            ['id', 'integer', 'min' => 1],
-            ['name', 'string', 'max' => 255],
+            [['name', 'category', 'value'], 'required'],
+            [['name', 'category'], 'string', 'max' => 255],
             ['value', JsonValidator::class ],
         ];
     }
@@ -42,9 +41,8 @@ class ConfigRecord extends \yii\db\ActiveRecord
     public function attributeLabels() : array
     {
         return [
-            'id' => 'ID',
             'name' => 'Name',
-            'value' => 'Value',
+            'value' => 'Wert',
         ];
     }
 

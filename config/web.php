@@ -1,7 +1,6 @@
 <?php
 
 use yii\i18n\PhpMessageSource;
-use yii\web\ErrorAction;
 use yii\debug\Module;
 use yii\log\FileTarget;
 use yii\swiftmailer\Mailer;
@@ -11,6 +10,10 @@ if(file_exists(__DIR__ . '/secrets.php')){
     $secrets = require  __DIR__ . '/secrets.php';
 }else{
     $secrets = require  __DIR__ . '/secrets.sample.php';
+    touch(__DIR__ . '/INSTALLING_NOW');
+}
+
+if(file_exists(__DIR__ . '/INSTALLING_NOW')){
     define('START_INSTALLER', true);
 }
 
@@ -22,6 +25,7 @@ $config = [
     'aliases' => [
         '@bower' => '@vendor/bower',
         '@npm'   => '@vendor/npm',
+        '@locale'   => '@app/locale',
     ],
 
     'components' => [
@@ -59,15 +63,17 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+            'enableStrictParsing' => false,
             'rules' => [
                 //enter routing rules here
+                'migrate/<action:\w*>' => 'migrate/catch-all',
             ],
         ],
         'i18n' => [
             'translations' => [
                 'app*' => [
                     'class' => PhpMessageSource::class,
-                    'basePath' => '@app/locale',
+                    'basePath' => '@locale',
                     'sourceLanguage' => 'en-US',
                     'fileMap' => [
                         'app/error' => 'error.php', // ?
@@ -75,9 +81,16 @@ $config = [
                 ],
             ],
         ],
-
     ],
-    'params' => $params,
+    'modules' => [
+        'files' => [
+            'class' => \floor12\files\Module::class,
+            'storage' => '@app/storage',
+            //'cache' => '@app/storage_cache',
+            'token_salt' => 'some_random_salt',
+        ],
+    ],
+    'params' => [],
 ];
 
 if (YII_ENV_DEV) {

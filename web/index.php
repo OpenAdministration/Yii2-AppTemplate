@@ -17,6 +17,6 @@ if(defined('START_INSTALLER')){
     $app->defaultRoute = 'install/welcome';
 }else{
     $app->defaultRoute = 'site/home';
-    $app->on(Application::EVENT_BEFORE_ACTION, [ConfigController::class, 'loadConfig']);
+    $app->on(Application::EVENT_BEFORE_REQUEST, [ConfigController::class, 'loadConfig']);
 }
 $app->run();

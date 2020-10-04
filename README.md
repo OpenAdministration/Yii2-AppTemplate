@@ -4,7 +4,7 @@ composer global require "fxp/composer-asset-plugin"
 composer install 
 ```
 
-After using this Template fill in `config/web.php` the following attributes: 
+After using this Template fill in `config/web.php` and `config/console.php` the following attributes: 
 ```
     'id' => '...',
     'name' => '...',

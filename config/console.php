@@ -1,41 +1,42 @@
 <?php
 
+use yii\log\FileTarget;
+use yii\caching\FileCache;
 use yii\gii\Module;
 
-if(file_exists(__DIR__ . '/names.php') && file_exists(__DIR__ . '/secrets.php')){
-    [$id, $name, $params] = require __DIR__ . '/names.php';
+if(file_exists(__DIR__ . '/secrets.php')){
     $secrets = require  __DIR__ . '/secrets.php';
 }else{
-    [$id, $name, $params] = require __DIR__ . '/names.sample.php';
     $secrets = require  __DIR__ . '/secrets.sample.php';
+    define('START_INSTALLER', true);
 }
 
-
 $config = [
-    'id' => $id . '-console',
+    'id' => 'yii-app-console',
+    'name' => 'Yii App',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'app\commands',
     'aliases' => [
-        '@bower' => '@vendor/bower-asset',
-        '@npm'   => '@vendor/npm-asset',
+        '@bower' => '@vendor/bower',
+        '@npm'   => '@vendor/npm',
         '@tests' => '@app/tests',
     ],
     'components' => [
         'cache' => [
-            'class' => 'yii\caching\FileCache',
+            'class' => FileCache::class,
         ],
         'log' => [
             'targets' => [
                 [
-                    'class' => 'yii\log\FileTarget',
+                    'class' => FileTarget::class,
                     'levels' => ['error', 'warning'],
                 ],
             ],
         ],
         'db' => $secrets['db'] ?? [],
     ],
-    'params' => $params,
+    'params' => [],
     /*
     'controllerMap' => [
         'fixture' => [ // Fixture generation command line.

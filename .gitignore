@@ -1,4 +1,4 @@
 /vendor/
-/config/names.php
-/config/secrets.php
 /runtime/
+/config/secrets.php
+/config/INSTALLING_NOW

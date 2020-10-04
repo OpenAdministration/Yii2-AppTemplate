@@ -16,9 +16,11 @@
         "yiisoft/yii2-bootstrap4": "~2.0.8",
         "yiisoft/yii2-bootstrap": "~2.0.10",
         "yidas/yii2-bower-asset": "dev-master",
-        "magp/yii2-json-schema-validator": "dev-master",
+        "ext-json": "*",
+        "kdn/yii2-json-editor": "dev-master",
         "romi45/yii2-json-validator": "dev-master",
-        "ext-json": "*"
+        "magp/yii2-json-schema-validator": "dev-master",
+        "2amigos/yii2-file-upload-widget": "~1.0"
     },
     "require-dev": {
         "roave/security-advisories": "dev-master",
