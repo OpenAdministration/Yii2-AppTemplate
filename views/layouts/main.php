@@ -28,28 +28,8 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 
 <div class="wrap">
-    <?php
-    NavBar::begin([
-        'brandLabel' => Yii::$app->name,
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-dark bg-dark navbar-expand-md navbar-fixed-top',
-        ],
-        'renderInnerContainer' => false,
-    ]);
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav'],
-        'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-        ],
-
-    ]);
-    NavBar::end();
-    ?>
-
-    <div class="container mt-3">
+    <?= \app\widgets\NavBar4::widget() ?>
+    <div class="container mt-4">
         <?= Breadcrumbs::widget([
             'links' => $this->params['breadcrumbs'] ?? [],
         ]) ?>

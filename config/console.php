@@ -1,5 +1,6 @@
 <?php
 
+use webvimark\modules\UserManagement\UserManagementModule;
 use yii\log\FileTarget;
 use yii\caching\FileCache;
 use yii\gii\Module;
@@ -37,6 +38,15 @@ $config = [
         'db' => $secrets['db'] ?? [],
     ],
     'params' => [],
+    'controllerMap' => [
+        /* @see https://www.yiiframework.com/doc/guide/2.0/en/db-migrations#namespaced-migrations */
+        'migrate' => [
+            'class' => yii\console\controllers\MigrateController::class,
+            'migrationPath' => [
+                '@app/migrations', // disable non-namespaced migrations if app\migrations is listed below
+            ],
+        ],
+    ],
     /*
     'controllerMap' => [
         'fixture' => [ // Fixture generation command line.

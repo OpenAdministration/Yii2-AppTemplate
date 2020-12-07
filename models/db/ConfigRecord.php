@@ -6,9 +6,8 @@ use romi45\yii2jsonvalidator\JsonValidator;
 use yii\db\ActiveRecord;
 
 /**
- * This is the model class for table "config".
- *
- * @property string $category
+ * This is the model class
+ * @property string $module [varchar(255)]
  * @property string $name
  * @property string $value
  *

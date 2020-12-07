@@ -14,9 +14,8 @@ $config = require __DIR__ . '/../config/web.php';
 
 $app = new Application($config);
 if(defined('START_INSTALLER')){
-    $app->defaultRoute = 'install/welcome';
+    $app->defaultRoute = 'config/install';
 }else{
     $app->defaultRoute = 'site/home';
-    $app->on(Application::EVENT_BEFORE_REQUEST, [ConfigController::class, 'loadConfig']);
 }
 $app->run();

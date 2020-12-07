@@ -1,7 +1,5 @@
 <?php
 
-use yii\db\Connection;
-
 return [
     'cookieValidationKey' => '<cookieValidationKey>',
     'db' => [

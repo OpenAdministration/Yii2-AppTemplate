@@ -22,13 +22,13 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        // FIXME: file is not there?
-        'css/site.css',
+        '/css/main.css',
     ];
     public $js = [
     ];
     public $depends = [
         YiiAsset::class,
         BootstrapAsset::class,
+        FontAwesomeAsset::class,
     ];
 }
